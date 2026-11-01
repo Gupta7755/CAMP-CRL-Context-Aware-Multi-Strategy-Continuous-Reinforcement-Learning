@@ -99,7 +99,15 @@ def evaluate(runs: list[Path], baseline_exp: str, workers: int = 12, modes_for_c
     store = ExperimentStore(out_root or ROOT / "runs")
     base_manifest = store.manifest(baseline_exp)
     base_results = store.read(baseline_exp, "results.json")
-    cfg_data = json.loads(next((store.path(baseline_exp) / "runs").glob("*/config.json")).read_text())["config"]
+    run_cfg = next((store.path(baseline_exp) / "runs").glob("*/config.json"), None)
+    if run_cfg is not None:
+        cfg_data = json.loads(run_cfg.read_text())["config"]
+    else:  # merged evaluations (merge_into_evaluation) keep results but no run folders
+        from camp_crl.config import load_config
+        from camp_crl.tuning import with_tuned_fixed_time
+
+        log.warning("baseline %s has no run configs; using the current configs/default.yaml + tuned plan", baseline_exp)
+        cfg_data = with_tuned_fixed_time(load_config(ROOT / "configs" / "default.yaml")).model_dump(mode="json")
     app = AppConfig.model_validate(cfg_data)
     scenarios, seeds = base_manifest["params"]["scenarios"], base_manifest["params"]["seeds"]
     jobs = []
