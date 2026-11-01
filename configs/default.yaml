@@ -1,0 +1,116 @@
+# CAMP-CRL Phase-1 configuration. All values are starting defaults, NOT tuned results.
+# Units: seconds, vehicles, veh/h, m/s, percent occupancy.
+
+simulation:
+  step_length_s: 1.0
+  duration_s: 1800
+  warmup_s: 300
+  time_to_teleport_s: 300
+  gui: false
+
+timing:
+  min_green_s: 10
+  max_green_s: 60
+  yellow_s: 3
+  all_red_s: 2
+  max_red_s: 120
+
+fixed_time:
+  green_s: [30, 30]   # NS, EW. Untuned reference plan.
+
+# fixed_time_tuned is filled from configs/tuned/fixed_time.json (written by `tune-fixed`).
+
+actuated:
+  detection_zone_m: 40
+  gap_s: 3
+  max_green_s: 45
+
+camp:
+  fairness_ref_wait_s: 90
+  risk_horizon_s: 10
+  risk_k_m: 0.03
+  lambda_momentum: 0.3
+  lambda_risk: 0.3
+  lambda_fairness: 0.5
+
+strategy:
+  confirm_steps: 3
+  min_hold_s: 15
+
+# Demand split: tune only on train (and select on validation); never tune on test.
+# demand_veh_per_h applies from t=0; profile segments change it from start_s.
+scenarios:
+  # ---------------- train ----------------
+  balanced:
+    name: balanced
+    split: train
+    description: Equal moderate demand on all approaches.
+    demand_veh_per_h: {N: 400, E: 400, S: 400, W: 400}
+  low_demand:
+    name: low_demand
+    split: train
+    description: Light traffic; tests idle behaviour and needless switching.
+    demand_veh_per_h: {N: 150, E: 150, S: 150, W: 150}
+  surge_n:
+    name: surge_n
+    split: train
+    description: Sudden northern surge between 900 s and 1200 s.
+    demand_veh_per_h: {N: 350, E: 350, S: 350, W: 350}
+    profile:
+      - {start_s: 900, demand_veh_per_h: {N: 900, E: 350, S: 350, W: 350}}
+      - {start_s: 1200, demand_veh_per_h: {N: 350, E: 350, S: 350, W: 350}}
+  bottleneck_s:
+    name: bottleneck_s
+    split: train
+    description: Southern exit slowed to 0.3 m/s (600-1200 s); queue backs up through the junction.
+    demand_veh_per_h: {N: 500, E: 350, S: 500, W: 350}
+    bottlenecks:
+      - {edge: C2S, speed_mps: 0.3, start_s: 600, end_s: 1200}
+  # ---------------- validation ----------------
+  ns_dominant:
+    name: ns_dominant
+    split: validation
+    description: North-south dominant demand.
+    demand_veh_per_h: {N: 650, E: 250, S: 650, W: 250}
+  time_varying:
+    name: time_varying
+    split: validation
+    description: NS dominant, then dominance swaps to EW at 900 s.
+    demand_veh_per_h: {N: 600, E: 250, S: 600, W: 250}
+    profile:
+      - {start_s: 900, demand_veh_per_h: {N: 250, E: 600, S: 250, W: 600}}
+  noisy_balanced:
+    name: noisy_balanced
+    split: validation
+    description: Balanced demand; controllers see 20 % noise and 10 % dropped observations.
+    demand_veh_per_h: {N: 450, E: 450, S: 450, W: 450}
+    sensor: {noise_std_frac: 0.2, dropout_prob: 0.1}
+  # ---------------- held-out test (unseen patterns) ----------------
+  ew_dominant_heldout:
+    name: ew_dominant_heldout
+    split: test
+    description: East-west dominant demand.
+    demand_veh_per_h: {N: 250, E: 700, S: 250, W: 700}
+  saturated_heldout:
+    name: saturated_heldout
+    split: test
+    description: High demand on all approaches, near capacity.
+    demand_veh_per_h: {N: 650, E: 650, S: 650, W: 650}
+  surge_w_noisy_heldout:
+    name: surge_w_noisy_heldout
+    split: test
+    description: Western surge (800-1200 s) observed through 15 % noise and 5 % dropout.
+    demand_veh_per_h: {N: 350, E: 350, S: 350, W: 350}
+    profile:
+      - {start_s: 800, demand_veh_per_h: {N: 350, E: 350, S: 350, W: 950}}
+      - {start_s: 1200, demand_veh_per_h: {N: 350, E: 350, S: 350, W: 350}}
+    sensor: {noise_std_frac: 0.15, dropout_prob: 0.05}
+  bottleneck_w_heldout:
+    name: bottleneck_w_heldout
+    split: test
+    description: Western exit slowed to 0.3 m/s (600-1300 s) under EW-heavy demand.
+    demand_veh_per_h: {N: 350, E: 500, S: 350, W: 500}
+    bottlenecks:
+      - {edge: C2W, speed_mps: 0.3, start_s: 600, end_s: 1300}
+
+output_dir: runs

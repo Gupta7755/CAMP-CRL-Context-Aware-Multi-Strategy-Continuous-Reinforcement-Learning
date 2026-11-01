@@ -1,0 +1,14 @@
+# Pinned versions verified on Windows 11 / Python 3.14.4 (2026-10-25).
+# eclipse-sumo bundles the SUMO binaries; traci/sumolib must match its version exactly.
+eclipse-sumo==1.28.0
+traci==1.28.0
+sumolib==1.28.0
+numpy==2.5.4
+pydantic==2.14.1
+PyYAML==6.0.3
+pytest==9.1.1
+# Backend (dashboard API)
+fastapi==0.162.0
+uvicorn==0.54.0
+httpx==0.28.1
+websockets==17.3  # required by uvicorn for the /ws/telemetry WebSocket

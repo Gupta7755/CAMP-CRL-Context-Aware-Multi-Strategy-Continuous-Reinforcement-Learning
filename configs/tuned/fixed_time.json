@@ -1,0 +1,619 @@
+{
+  "green_s": [
+    20.0,
+    12.0
+  ],
+  "objective": "relative regret: mean over scenarios of plan delay / best plan delay; reject teleports or unfinished > 10%",
+  "scenarios": [
+    "balanced",
+    "low_demand",
+    "surge_n",
+    "bottleneck_s"
+  ],
+  "seeds": [
+    1,
+    2,
+    3
+  ],
+  "grid": [
+    10.0,
+    12.0,
+    15.0,
+    20.0,
+    25.0,
+    30.0
+  ],
+  "simulation": {
+    "step_length_s": 1.0,
+    "duration_s": 1800,
+    "warmup_s": 300,
+    "time_to_teleport_s": 300,
+    "gui": false
+  },
+  "timing": {
+    "min_green_s": 10.0,
+    "max_green_s": 60.0,
+    "yellow_s": 3.0,
+    "all_red_s": 2.0,
+    "max_red_s": 120.0
+  },
+  "created": "2026-10-26T00:23:14",
+  "candidates": [
+    {
+      "green_s": [
+        10.0,
+        10.0
+      ],
+      "relative_regret": 1.1251462727764143,
+      "delay_mean_s": 47.05572592873266,
+      "delay_std_s": 63.799901416383726,
+      "per_scenario_delay_s": {
+        "balanced": 12.937371687734753,
+        "low_demand": 10.378351953184374,
+        "surge_n": 14.99049966474933,
+        "bottleneck_s": 149.9166804092622
+      },
+      "rejected": true
+    },
+    {
+      "green_s": [
+        10.0,
+        12.0
+      ],
+      "relative_regret": 1.1214844651191402,
+      "delay_mean_s": 42.756283313197635,
+      "delay_std_s": 54.64380448343272,
+      "per_scenario_delay_s": {
+        "balanced": 13.167676712152073,
+        "low_demand": 10.959359895120839,
+        "surge_n": 16.120050152695526,
+        "bottleneck_s": 130.77804649282209
+      },
+      "rejected": false
+    },
+    {
+      "green_s": [
+        10.0,
+        15.0
+      ],
+      "relative_regret": 1.277967856664472,
+      "delay_mean_s": 48.57682082548441,
+      "delay_std_s": 60.86525199634152,
+      "per_scenario_delay_s": {
+        "balanced": 14.412235101957592,
+        "low_demand": 11.084865518262632,
+        "surge_n": 21.006204184871926,
+        "bottleneck_s": 147.80397849684547
+      },
+      "rejected": true
+    },
+    {
+      "green_s": [
+        10.0,
+        20.0
+      ],
+      "relative_regret": 1.5444009325065053,
+      "delay_mean_s": 52.36284007772742,
+      "delay_std_s": 60.564082116526976,
+      "per_scenario_delay_s": {
+        "balanced": 17.755419473415568,
+        "low_demand": 11.89270904307669,
+        "surge_n": 30.638335505621487,
+        "bottleneck_s": 149.16489628879594
+      },
+      "rejected": true
+    },
+    {
+      "green_s": [
+        10.0,
+        25.0
+      ],
+      "relative_regret": 1.9320322899675406,
+      "delay_mean_s": 59.78577639634319,
+      "delay_std_s": 61.69464542698078,
+      "per_scenario_delay_s": {
+        "balanced": 23.247595920067212,
+        "low_demand": 12.814123665682489,
+        "surge_n": 43.27717355958663,
+        "bottleneck_s": 159.80421244003642
+      },
+      "rejected": true
+    },
+    {
+      "green_s": [
+        10.0,
+        30.0
+      ],
+      "relative_regret": 2.4310607213978392,
+      "delay_mean_s": 71.07119938289394,
+      "delay_std_s": 68.70196822272128,
+      "per_scenario_delay_s": {
+        "balanced": 32.70966240129715,
+        "low_demand": 14.657092750258615,
+        "surge_n": 55.17492273035136,
+        "bottleneck_s": 181.74311964966856
+      },
+      "rejected": true
+    },
+    {
+      "green_s": [
+        12.0,
+        10.0
+      ],
+      "relative_regret": 1.0804558372464184,
+      "delay_mean_s": 43.56229712175958,
+      "delay_std_s": 57.126023079385675,
+      "per_scenario_delay_s": {
+        "balanced": 13.006689026751703,
+        "low_demand": 10.85065070387129,
+        "surge_n": 13.470445552285568,
+        "bottleneck_s": 136.92140320412977
+      },
+      "rejected": true
+    },
+    {
+      "green_s": [
+        12.0,
+        12.0
+      ],
+      "relative_regret": 1.122217907119637,
+      "delay_mean_s": 47.85117515362435,
+      "delay_std_s": 63.81636089550078,
+      "per_scenario_delay_s": {
+        "balanced": 13.239079652437319,
+        "low_demand": 10.109912044743051,
+        "surge_n": 14.42157390984738,
+        "bottleneck_s": 153.6341350074696
+      },
+      "rejected": true
+    },
+    {
+      "green_s": [
+        12.0,
+        15.0
+      ],
+      "relative_regret": 1.1747468579894855,
+      "delay_mean_s": 46.14668536304357,
+      "delay_std_s": 58.6433898840635,
+      "per_scenario_delay_s": {
+        "balanced": 13.916035524978478,
+        "low_demand": 11.609070267746736,
+        "surge_n": 15.820766790712073,
+        "bottleneck_s": 143.24086886873695
+      },
+      "rejected": true
+    },
+    {
+      "green_s": [
+        12.0,
+        20.0
+      ],
+      "relative_regret": 1.3399605456509043,
+      "delay_mean_s": 48.051660311945874,
+      "delay_std_s": 56.91097894037277,
+      "per_scenario_delay_s": {
+        "balanced": 16.15375159352931,
+        "low_demand": 11.840848017134782,
+        "surge_n": 22.23911235295901,
+        "bottleneck_s": 141.97292928416036
+      },
+      "rejected": true
+    },
+    {
+      "green_s": [
+        12.0,
+        25.0
+      ],
+      "relative_regret": 1.5883876386692661,
+      "delay_mean_s": 52.67453063804032,
+      "delay_std_s": 59.180278647035344,
+      "per_scenario_delay_s": {
+        "balanced": 18.529311987432965,
+        "low_demand": 12.755356074190715,
+        "surge_n": 31.16538025826523,
+        "bottleneck_s": 148.2480742322724
+      },
+      "rejected": true
+    },
+    {
+      "green_s": [
+        12.0,
+        30.0
+      ],
+      "relative_regret": 1.9382160847335355,
+      "delay_mean_s": 62.562439039852734,
+      "delay_std_s": 67.17376057781966,
+      "per_scenario_delay_s": {
+        "balanced": 22.769729132157924,
+        "low_demand": 13.456259592115382,
+        "surge_n": 41.72405859197126,
+        "bottleneck_s": 172.29970884316631
+      },
+      "rejected": true
+    },
+    {
+      "green_s": [
+        15.0,
+        10.0
+      ],
+      "relative_regret": 1.1306838569086757,
+      "delay_mean_s": 45.01270186799476,
+      "delay_std_s": 64.51717280498154,
+      "per_scenario_delay_s": {
+        "balanced": 14.081478131569767,
+        "low_demand": 11.265102417543595,
+        "surge_n": 14.048838768700891,
+        "bottleneck_s": 140.65538815416477
+      },
+      "rejected": true
+    },
+    {
+      "green_s": [
+        15.0,
+        12.0
+      ],
+      "relative_regret": 1.0884953040666312,
+      "delay_mean_s": 42.448762691947486,
+      "delay_std_s": 57.47644997146106,
+      "per_scenario_delay_s": {
+        "balanced": 13.575456167026545,
+        "low_demand": 11.109994700582936,
+        "surge_n": 13.631644256165059,
+        "bottleneck_s": 131.47795564401542
+      },
+      "rejected": true
+    },
+    {
+      "green_s": [
+        15.0,
+        15.0
+      ],
+      "relative_regret": 1.1088158966018984,
+      "delay_mean_s": 41.672836992454485,
+      "delay_std_s": 53.488784735423245,
+      "per_scenario_delay_s": {
+        "balanced": 14.132453897871946,
+        "low_demand": 11.43848450065896,
+        "surge_n": 14.275589785066638,
+        "bottleneck_s": 126.8448197862204
+      },
+      "rejected": true
+    },
+    {
+      "green_s": [
+        15.0,
+        20.0
+      ],
+      "relative_regret": 1.17381948269967,
+      "delay_mean_s": 41.54653663189657,
+      "delay_std_s": 49.83487739919774,
+      "per_scenario_delay_s": {
+        "balanced": 15.303936475689474,
+        "low_demand": 12.197248514270571,
+        "surge_n": 16.063972327442386,
+        "bottleneck_s": 122.62098921018385
+      },
+      "rejected": true
+    },
+    {
+      "green_s": [
+        15.0,
+        25.0
+      ],
+      "relative_regret": 1.3693134838044116,
+      "delay_mean_s": 47.95223759283747,
+      "delay_std_s": 57.17404707814027,
+      "per_scenario_delay_s": {
+        "balanced": 16.670335732273557,
+        "low_demand": 13.197035584604214,
+        "surge_n": 21.685875623385048,
+        "bottleneck_s": 140.25570343108708
+      },
+      "rejected": true
+    },
+    {
+      "green_s": [
+        15.0,
+        30.0
+      ],
+      "relative_regret": 1.5729339708241459,
+      "delay_mean_s": 51.10753872432301,
+      "delay_std_s": 55.98033260107738,
+      "per_scenario_delay_s": {
+        "balanced": 19.164046156730407,
+        "low_demand": 14.183162229507042,
+        "surge_n": 28.457041939550354,
+        "bottleneck_s": 142.6259045715042
+      },
+      "rejected": true
+    },
+    {
+      "green_s": [
+        20.0,
+        10.0
+      ],
+      "relative_regret": 1.163571920860595,
+      "delay_mean_s": 40.79119770062167,
+      "delay_std_s": 49.04645811933211,
+      "per_scenario_delay_s": {
+        "balanced": 16.80692375475238,
+        "low_demand": 11.875580357695432,
+        "surge_n": 14.725842698189469,
+        "bottleneck_s": 119.7564439918494
+      },
+      "rejected": true
+    },
+    {
+      "green_s": [
+        20.0,
+        12.0
+      ],
+      "relative_regret": 1.0829019282359986,
+      "delay_mean_s": 37.664707154334415,
+      "delay_std_s": 44.440722746700324,
+      "per_scenario_delay_s": {
+        "balanced": 15.075631912518455,
+        "low_demand": 11.23578336848473,
+        "surge_n": 14.210872886343575,
+        "bottleneck_s": 110.13654044999089
+      },
+      "rejected": false
+    },
+    {
+      "green_s": [
+        20.0,
+        15.0
+      ],
+      "relative_regret": 1.1228733183509885,
+      "delay_mean_s": 38.76541133961914,
+      "delay_std_s": 45.37300283087417,
+      "per_scenario_delay_s": {
+        "balanced": 15.239249257123388,
+        "low_demand": 12.045432989678735,
+        "surge_n": 14.76361320489856,
+        "bottleneck_s": 113.0133499067759
+      },
+      "rejected": true
+    },
+    {
+      "green_s": [
+        20.0,
+        20.0
+      ],
+      "relative_regret": 1.2196381889599397,
+      "delay_mean_s": 46.42546860767214,
+      "delay_std_s": 59.208906914113236,
+      "per_scenario_delay_s": {
+        "balanced": 15.311365337341362,
+        "low_demand": 12.54357216142271,
+        "surge_n": 15.672010212408622,
+        "bottleneck_s": 142.17492671951584
+      },
+      "rejected": true
+    },
+    {
+      "green_s": [
+        20.0,
+        25.0
+      ],
+      "relative_regret": 1.1945085178453865,
+      "delay_mean_s": 39.81195781171109,
+      "delay_std_s": 46.246516355287056,
+      "per_scenario_delay_s": {
+        "balanced": 15.638835431401793,
+        "low_demand": 13.253173634964197,
+        "surge_n": 16.494486762896354,
+        "bottleneck_s": 113.86133541758203
+      },
+      "rejected": true
+    },
+    {
+      "green_s": [
+        20.0,
+        30.0
+      ],
+      "relative_regret": 1.3867755862206297,
+      "delay_mean_s": 47.83852122554851,
+      "delay_std_s": 55.43909797255662,
+      "per_scenario_delay_s": {
+        "balanced": 17.75827814053932,
+        "low_demand": 14.551929898956466,
+        "surge_n": 19.814226914299482,
+        "bottleneck_s": 139.22964994839876
+      },
+      "rejected": true
+    },
+    {
+      "green_s": [
+        25.0,
+        10.0
+      ],
+      "relative_regret": 1.2816727997980337,
+      "delay_mean_s": 42.207736591300225,
+      "delay_std_s": 47.19366250044738,
+      "per_scenario_delay_s": {
+        "balanced": 20.95796097107805,
+        "low_demand": 12.626508392274124,
+        "surge_n": 15.805270469961618,
+        "bottleneck_s": 119.44120653188712
+      },
+      "rejected": true
+    },
+    {
+      "green_s": [
+        25.0,
+        12.0
+      ],
+      "relative_regret": 1.2528236382481204,
+      "delay_mean_s": 46.19973070505345,
+      "delay_std_s": 56.46639534104928,
+      "per_scenario_delay_s": {
+        "balanced": 17.38353067790034,
+        "low_demand": 12.882188842904531,
+        "surge_n": 15.198796108481647,
+        "bottleneck_s": 139.3344071909273
+      },
+      "rejected": true
+    },
+    {
+      "green_s": [
+        25.0,
+        15.0
+      ],
+      "relative_regret": 1.1728442750265489,
+      "delay_mean_s": 42.202360370112494,
+      "delay_std_s": 51.40240012287942,
+      "per_scenario_delay_s": {
+        "balanced": 15.983653359110038,
+        "low_demand": 12.380022879987692,
+        "surge_n": 14.674925750459773,
+        "bottleneck_s": 125.77083949089247
+      },
+      "rejected": true
+    },
+    {
+      "green_s": [
+        25.0,
+        20.0
+      ],
+      "relative_regret": 1.1578225124190116,
+      "delay_mean_s": 39.087432018465854,
+      "delay_std_s": 45.90585352048264,
+      "per_scenario_delay_s": {
+        "balanced": 15.338322488005195,
+        "low_demand": 13.249088036790551,
+        "surge_n": 14.966429875539184,
+        "bottleneck_s": 112.7958876735285
+      },
+      "rejected": true
+    },
+    {
+      "green_s": [
+        25.0,
+        25.0
+      ],
+      "relative_regret": 1.228041081916846,
+      "delay_mean_s": 39.55133152585979,
+      "delay_std_s": 45.178213819589025,
+      "per_scenario_delay_s": {
+        "balanced": 16.379640313180733,
+        "low_demand": 14.092420849420849,
+        "surge_n": 16.765662169489296,
+        "bottleneck_s": 110.96760277134827
+      },
+      "rejected": true
+    },
+    {
+      "green_s": [
+        25.0,
+        30.0
+      ],
+      "relative_regret": 1.3510759350174844,
+      "delay_mean_s": 46.11019131282628,
+      "delay_std_s": 54.055713699784626,
+      "per_scenario_delay_s": {
+        "balanced": 17.293862286221835,
+        "low_demand": 15.059566184183966,
+        "surge_n": 18.372320356981337,
+        "bottleneck_s": 133.71501642391797
+      },
+      "rejected": true
+    },
+    {
+      "green_s": [
+        30.0,
+        10.0
+      ],
+      "relative_regret": 1.5589983674016394,
+      "delay_mean_s": 52.08470509556006,
+      "delay_std_s": 58.32793237858595,
+      "per_scenario_delay_s": {
+        "balanced": 28.820886262299613,
+        "low_demand": 13.178410158751255,
+        "surge_n": 18.331940129510638,
+        "bottleneck_s": 148.00758383167874
+      },
+      "rejected": true
+    },
+    {
+      "green_s": [
+        30.0,
+        12.0
+      ],
+      "relative_regret": 1.369787871520478,
+      "delay_mean_s": 43.92860728866582,
+      "delay_std_s": 48.152688256607355,
+      "per_scenario_delay_s": {
+        "balanced": 22.967166052123332,
+        "low_demand": 13.585964342167436,
+        "surge_n": 16.82910899703504,
+        "bottleneck_s": 122.33218976333745
+      },
+      "rejected": true
+    },
+    {
+      "green_s": [
+        30.0,
+        15.0
+      ],
+      "relative_regret": 1.275916100646402,
+      "delay_mean_s": 45.74190887766932,
+      "delay_std_s": 55.365929715838575,
+      "per_scenario_delay_s": {
+        "balanced": 17.585617479688764,
+        "low_demand": 13.49554585993792,
+        "surge_n": 15.814416395710026,
+        "bottleneck_s": 136.07205577534057
+      },
+      "rejected": true
+    },
+    {
+      "green_s": [
+        30.0,
+        20.0
+      ],
+      "relative_regret": 1.2283566531390586,
+      "delay_mean_s": 39.93592882712709,
+      "delay_std_s": 44.335248883494636,
+      "per_scenario_delay_s": {
+        "balanced": 17.047791478884857,
+        "low_demand": 13.936880425593662,
+        "surge_n": 16.0855887050402,
+        "bottleneck_s": 112.67345469898966
+      },
+      "rejected": true
+    },
+    {
+      "green_s": [
+        30.0,
+        25.0
+      ],
+      "relative_regret": 1.2845376033062983,
+      "delay_mean_s": 41.85501857326286,
+      "delay_std_s": 46.617387332032756,
+      "per_scenario_delay_s": {
+        "balanced": 17.02707324641349,
+        "low_demand": 14.962677629131784,
+        "surge_n": 17.07225098295102,
+        "bottleneck_s": 118.35807243455515
+      },
+      "rejected": true
+    },
+    {
+      "green_s": [
+        30.0,
+        30.0
+      ],
+      "relative_regret": 1.2519080243456469,
+      "delay_mean_s": 40.20852971268346,
+      "delay_std_s": 43.85975188733918,
+      "per_scenario_delay_s": {
+        "balanced": 17.10135724819651,
+        "low_demand": 13.432399756577473,
+        "surge_n": 18.018921670452883,
+        "bottleneck_s": 112.28144017550694
+      },
+      "rejected": true
+    }
+  ]
+}

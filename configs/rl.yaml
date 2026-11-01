@@ -1,0 +1,30 @@
+# Phase-2 RL settings. Starting defaults, NOT tuned values. Tune only on train/validation scenarios.
+action:
+  max_hold_s: 15        # hold range [1, max_hold_s] seconds when the agent keeps the current green
+
+reward:                 # r = sum_seconds(-wQ q + wT thr - wW w - wF f - wO spill) * per_second_scale
+  queue: 2.0            #     - wS * switched - wI * safety_interventions
+                        # queue 1.0 -> 2.0 after the reward-sensitivity analysis on TRAIN scenarios
+                        # (camp_crl.rl.reward_sensitivity): Spearman(reward, -delay) 0.67 -> 0.84 and
+                        # best-by-reward == best-by-delay in 8/8 groups (was 7/8). Small sample: 5 policies x 8 groups.
+  throughput: 0.5
+  max_wait: 0.5
+  fairness: 0.25
+  spillback: 1.0
+  switch: 0.1
+  intervention: 0.5
+  per_second_scale: 0.1
+
+train_scenarios: [balanced, low_demand, surge_n, bottleneck_s]
+validation_scenarios: [ns_dominant, time_varying, noisy_balanced]
+
+algo:
+  learning_rate: 0.001
+  buffer_size: 200000
+  batch_size: 256
+  gamma: 0.98
+  tau: 0.005
+  learning_starts: 2000
+  action_noise_std: 0.2
+  net_arch: [256, 256]
+  policy_delay: 2       # TD3 only

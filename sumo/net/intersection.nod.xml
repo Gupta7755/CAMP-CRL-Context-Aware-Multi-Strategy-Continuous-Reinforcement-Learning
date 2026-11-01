@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Four-arm isolated intersection. C is signalised; N/S/E/W are fringe nodes 200 m away. -->
+<nodes>
+    <node id="C" x="0.0"    y="0.0"    type="traffic_light"/>
+    <node id="N" x="0.0"    y="200.0"  type="priority"/>
+    <node id="S" x="0.0"    y="-200.0" type="priority"/>
+    <node id="E" x="200.0"  y="0.0"    type="priority"/>
+    <node id="W" x="-200.0" y="0.0"    type="priority"/>
+</nodes>

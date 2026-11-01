@@ -1,0 +1,76 @@
+# Phase 3 perception settings. Validated by camp_crl/vision/config.py.
+# Camera data only drives the SUMO simulation (demand mirroring); it never controls real signals.
+#
+# Default: four synthetic cameras with a scripted fault on each, for a repeatable offline demo.
+# Phone cameras are easiest to set on the dashboard's Cameras page (paste e.g. http://192.168.0.110:8080/video);
+# those settings are saved in configs/cameras.local.json and override the sources below per approach.
+# Draw `roi` (normalised x, y) around the approach lanes up to the stop line.
+
+fps: 10                 # frames processed per second (offline demo clock)
+process_every_n: 1
+retry_s: 1.0            # reconnect backoff starts here, doubles per failure ...
+retry_max_s: 30.0       # ... up to this
+
+detector:
+  kind: auto            # auto: YOLOX (models/yolox_nano.onnx, Apache-2.0) for real cameras, synthetic for synthetic ones
+  model: models/yolox_nano.onnx
+  # Real-footage check (docs/phase3_real_footage_check.md, 6 hand-labelled 1080p frames, 47 vehicles):
+  # every yolox_nano box >= 0.35 was a vehicle (24/24); 0.20-0.35 added 5 vehicles and 2 duplicate boxes.
+  # So boxes down to 0.20 are passed on, but only >= tracker.high_thr may start a track.
+  score_thr: 0.20
+  nms_thr: 0.45
+  threads: 2
+  miss_prob: 0.05
+  false_pos_per_frame: 0.02
+
+tracker:
+  # Was 0.5 (tuned on the synthetic detector, scores ~0.8). On real footage 7 of 24 correct boxes
+  # scored 0.35-0.5 and would never have started a track.
+  high_thr: 0.35
+  low_thr: 0.2
+  match_iou: 0.3
+  min_hits: 3
+  max_age_s: 1.5
+  dist_gate: 1.5
+
+health:
+  stale_after_s: 2.0
+  # Below 6 fps the camera is DEGRADED and the bridge falls back. Measured on the synthetic scene
+  # (600 s, 70 px/s vehicles in a 240 px frame): 10 fps counted arrivals exactly; 3-5 fps over-counted
+  # by 0-14 % because tracks break between frames. Re-check this on real footage.
+  min_fps: 6.0
+  target_fps: 10.0
+  min_det_score: 0.35
+  good_det_score: 0.6
+  min_contrast: 6.0
+
+bridge:
+  min_confidence: 0.5
+  ewma_tau_s: 120
+  min_trusted_s: 60
+  default_veh_per_h: {N: 400, E: 400, S: 400, W: 400}
+
+# ROI guidance from the same check: unoccluded vehicles >= ~100 px wide in a 1920 px frame (about 5 % of
+# the frame width, ~22 px at the 416 px detector input) were all detected (18/18); smaller ones 5/13;
+# partly occluded ones 1/16. End the ROI where vehicles are still >= ~5 % of the frame width.
+cameras:
+  N:
+    source: synthetic
+    synthetic: {rate_veh_per_h: 550, offset_s: 0}
+    faults:
+      - {kind: disconnect, start_s: 600, end_s: 720}
+  E:
+    source: synthetic
+    synthetic: {rate_veh_per_h: 350, offset_s: 30}
+    faults:
+      - {kind: low_fps, start_s: 900, end_s: 1080, fps: 2}
+  S:
+    source: synthetic
+    synthetic: {rate_veh_per_h: 500, offset_s: 0}
+    faults:
+      - {kind: occlusion, start_s: 1200, end_s: 1320}
+  W:
+    source: synthetic
+    synthetic: {rate_veh_per_h: 300, offset_s: 30}
+    faults:
+      - {kind: stale, start_s: 1440, end_s: 1560}

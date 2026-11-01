@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+runs/
+sumo/build/
+.env
+models/*.onnx
+configs/cameras.local.json

@@ -1,0 +1,7 @@
+# Phase 3 perception extras (install on top of requirements.txt):
+#   pip install -r requirements-vision.txt
+# opencv-python-headless: video/stream I/O and drawing; headless (no GUI deps), abi3 wheel works on Python 3.14.
+#   4.14 rather than 5.0: 5.0 is a new major release; 4.14 is the mature line and has everything used here.
+# onnxruntime: CPU inference for the YOLOX ONNX models (no CUDA assumed). 1.31.0 has cp314 Windows wheels.
+opencv-python-headless==4.14.0.94
+onnxruntime==1.31.0

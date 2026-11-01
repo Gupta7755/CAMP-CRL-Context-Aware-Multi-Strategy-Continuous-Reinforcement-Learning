@@ -1,0 +1,8 @@
+# Phase 2 (RL). Install after requirements.txt:
+#   python -m pip install -r requirements-rl.txt
+# CPU-only PyTorch (no CUDA GPU on the development machine); verified on Python 3.14.4.
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.14.1+cpu
+gymnasium==1.4.0
+stable-baselines3==2.9.0
+cloudpickle==3.1.2

@@ -1,0 +1,9 @@
+[project]
+name = "camp-crl"
+version = "0.1.0"
+description = "CAMP-CRL: context-aware adaptive traffic signal control research prototype (simulation only)."
+requires-python = ">=3.11"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["sumo: integration tests that launch SUMO (slower)"]
